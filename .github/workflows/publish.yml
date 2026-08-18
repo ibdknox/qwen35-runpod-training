@@ -24,6 +24,11 @@ jobs:
         with:
           context: .
           platforms: linux/amd64
+          # RunPod only needs the single AMD64 image. BuildKit provenance wraps a
+          # one-platform build in an OCI index with an attestation manifest, which
+          # some custom-image pull paths can leave stuck in "downloading image".
+          provenance: false
+          sbom: false
           push: true
           tags: |
             ghcr.io/ibdknox/qwen35-runpod-training:pt2.8-tf5.2
