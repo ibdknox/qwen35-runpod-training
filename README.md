@@ -11,3 +11,7 @@ ghcr.io/ibdknox/qwen35-runpod-training:pt2.8-tf5.2
 ```
 
 Model weights should be downloaded from Hugging Face when a pod starts.
+
+RunPod cold pulls from GHCR have been observed to stall on this 11.5 GiB
+image. For short experiments, prefer RunPod's base image plus the equivalent
+small dependency bootstrap in the DecisionWorld training scaffold.
